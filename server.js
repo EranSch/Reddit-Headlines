@@ -12,6 +12,7 @@ var redditGetter = function(){
 		});
 		res.on('end', function() {
 			redditData = JSON.parse(body);
+			redditTitles = '';
 			redditData.data.children.forEach(function(post){
 				if(post.data.title){
 					redditTitles += post.data.title + ' ';
