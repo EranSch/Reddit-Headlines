@@ -16,7 +16,8 @@ a:hover span{
 h1, footer {
     font-family: helvetica, arial;
     color: rgb(241, 241, 241);
-    max-width: 350px;
+    width: 40vw;
+    min-width: 350px;
     margin: 1em auto;
     padding: 0;
     opacity: 0;
@@ -28,13 +29,23 @@ h1.loaded, footer.loaded {
 p {
     font-family: helvetica, arial;
     display: block;
-    max-width: 350px;
+    width: 40vw;
+    min-width: 350px;
     margin: 0 auto;
     padding: 0
 }
 p {
     opacity: 0;
-    transition-duration: 3s
+    transition: all 5s ease-out;
+}
+p:hover {
+    transform: scale(1.1);
+}
+p:hover.blast-root .blast{
+    color: rgb(233, 109, 109);
+}
+p:hover.blast-root .blast:nth-of-type(2n){
+     color: rgb(201, 201, 201);
 }
 p.loaded {
     opacity: 1
