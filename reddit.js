@@ -1,7 +1,8 @@
-var http = require('http');
+var http = require('http'),
+    _ = require('underscore');
 
 var url = 'http://www.reddit.com/r/all.json',
-redditTitles = '',
+data = {},
 lastRead;
 
 var redditGetter = function(){
@@ -12,11 +13,8 @@ var redditGetter = function(){
 		});
 		res.on('end', function() {
 			redditData = JSON.parse(body);
-			redditTitles = '';
-			redditData.data.children.forEach(function(post){
-				if(post.data.title){
-					redditTitles += post.data.title + ' ';
-				}
+			data = _.map(redditData.data.children, function(post){
+				return _.pick(post.data, 'title', 'url');
 			});
 			lastRead = new Date();
 		});
@@ -29,5 +27,5 @@ redditGetter();
 
 exports.get = function(){
 	if( Math.abs(new Date() - lastRead) >= 300000 ) redditGetter();
-	return redditTitles;
+	return data;
 };

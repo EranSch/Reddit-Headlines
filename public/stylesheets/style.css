@@ -4,6 +4,15 @@ html, body {
     margin: 0;
     padding: 0
 }
+a{
+    text-decoration: none;
+}
+a:hover{
+    transform: scale(1.005);
+}
+a:hover span{
+    transition-duration: 1s;
+}
 h1, footer {
     font-family: helvetica, arial;
     color: rgb(241, 241, 241);
@@ -45,7 +54,6 @@ footer {
 }
 footer a {
     color: rgb(141, 141, 141);
-    text-decoration: none;
 }
 .slabtexted .slabtext {
     display: -moz-inline-box;

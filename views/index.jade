@@ -1,4 +1,7 @@
 extends layout
 
 block content
-  p #{data}
+  each post in data
+    p
+      a(target='_blank',href=post.url)
+        span #{post.title}
